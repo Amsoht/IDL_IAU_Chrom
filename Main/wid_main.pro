@@ -13,7 +13,7 @@ PRO wid_main_handle, event
 
   COMMON DATA
   COMMON WIDID
-    
+
   IF error_handler_IO EQ 1 THEN BEGIN
     CATCH, Error_status
     IF Error_status NE 0 THEN BEGIN

@@ -27,7 +27,10 @@ FUNCTION read_ecd_txt, PATH=path, T_SCALE=t_scale, VERSION=version, DEF_FILE=def
 
   IF NOT KEYWORD_SET(def_file) THEN $
     fname=DIALOG_PICKFILE(/MULTIPLE_FILES, PATH=path, filter='*.txt', TITLE='Please select *.txt file(s) to import.') $
-      ELSE fname=def_file
+      ELSE BEGIN
+        fname=def_file
+        fname = FILE_SEARCH(fname,'*.txt')
+      ENDELSE
 
 
    IF strlen(fname[0]) EQ 0 THEN BEGIN
