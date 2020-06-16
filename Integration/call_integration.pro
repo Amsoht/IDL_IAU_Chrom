@@ -128,7 +128,7 @@ PRO call_integration, sel_chrom, sel_name, PLOT=plot, FIX_XYRANGE=fix_xyrange, M
               int_pwin=WHERE(x GE int_win[0] AND x LE int_win[1])
               prange = [rt_win, fit_win, int_win]
               xrange = [prange[(WHERE(prange EQ MIN(prange)))[0]], prange[(WHERE(prange EQ MAX(prange)))[0]]]
-              yrange = [MIN(v[WHERE(x GE rt_win[0] AND x LE rt_win[1], nvd)], /NAN)-offset, $
+              yrange = [MIN([MIN(v[WHERE(x GE rt_win[0] AND x LE rt_win[1], nvd)], /NAN), MIN(base_fit[int_pwin])])-offset, $
                         MAX(v[WHERE(x GE rt_win[0] AND x LE rt_win[1], nvd)], /NAN)+offset]
               plot_routine_pobj1, x, v, X_1A=x[fit_pwin], V_1A=peak_fit+base_fit, X_1B=x[fit_pwin], V_1B=base_fit, $
                                         X_1E=x[int_pwin], V_1E=peak_int+base_int, X_1F=x[int_pwin], V_1F=base_int, $
